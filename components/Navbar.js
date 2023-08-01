@@ -75,7 +75,7 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className={`bg-[white] w-full block transition-[top] duration-[0.3s] sticky ${ scrollDirection === "down" ? "-top-20" : "top-0"} h-20 flex justify-between pr-[5vw] pl-[1vw] align-middle border-b`}>
+    <nav className={`bg-[white] w-full block transition-[top] duration-[0.3s] sticky ${ scrollDirection === "down" ? "-top-20" : "top-0"} h-20 flex justify-between pr-[5vw] pl-[1vw] align-middle border-b z-[100]`}>
       
         <div className='pl-5'>
             <Link href='/'>

@@ -1,54 +1,72 @@
-import React, { useRef,useEffect, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-
-
-// import required modules
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import styles from "../styles/Responsive.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const images = [
-  "https://wallpaperset.com/w/full/f/3/6/156289.jpg",  
-  "https://wallpaperset.com/w/full/e/7/b/156231.jpg",
-  "https://wallpaperset.com/w/full/c/7/4/156276.jpg",
-  "https://wallpaperset.com/w/full/2/7/c/156194.jpg",
   "https://wallpaperset.com/w/full/d/d/a/156225.jpg",
+  "https://img2.wallspic.com/crops/8/7/9/9/29978/29978-technical_support-interior_design-desk-furniture-table-1920x1080.jpg",
+  "https://wallpaperset.com/w/full/0/1/8/156429.jpg",
+  "https://cdn.wallpapersafari.com/39/81/L4XZcH.jpg",
+  "https://wallpaperaccess.com/full/1347458.jpg"
 ]
 
-export default function App() {
-    const [Data, setData] = useState([])
-    useEffect(()=>{
-        fetch("https://api.escuelajs.co/api/v1/categories").then((res)=> res.json()).then((data)=> setData(data))
-    })
+
+export default function ResponsiveCarousel({data}) {
+  
+  const router = useRouter();
 
   return (
-    <>
-      <Swiper
-        cssMode={true}
-        navigation={true}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper"
-      >
-        {Data.map((item,i)=>{
-            if (i<5) {
-                return(
-                    <SwiperSlide >
-                        <img className="w-[100%] h-auto" src={images[i]} alt={"slide"+i}></img>
-                    </SwiperSlide>
-                )
-            }
-        })}
+    
+      <Carousel
+        showArrows={true}
+        autoFocus = {true}
+        autoPlay={true}
+        interval={5000}
+        swipeable={true}
+        showIndicators={true}
+        stopOnHover={true}
+        infiniteLoop={true}
+        dynamicHeight={false}
+        emulateTouch={true}
+        
+        className={styles.mySwiper}
        
-      </Swiper>
-    </>
+      >
+      
+        {images.map((item, i) => (
+           
+              <div key={i} className={styles.swipItem}>
+                
+                  
+                  <img src={item} alt="slides" />
+                  
+
+                
+                  
+                
+                 
+                  <Link href={`/categories/${data.at(i).id}`}>
+                  <div className={styles.backgroundd}></div>
+                  
+                  <div className={styles.background}></div>
+                  <div className={styles.detail}>
+                    <h2>{data.at(i).name}</h2>
+                  </div>
+                  </Link>
+               </div>
+               
+              
+            
+                
+           
+        )
+          
+        )}
+      
+       
+      </Carousel>
+ 
   );
 }
