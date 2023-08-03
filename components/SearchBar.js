@@ -26,10 +26,10 @@ const SearchBar = () => {
             placeholder='Search...'
             id='search'
             type="text" 
-            className='border h-10 w-[30vw] bg-slate-100 border-none rounded-[2px] text-slate-700 p-3 ease in duration-200  outline-none focus:outline-[#ff5349] focus:bg-white '
+            className='border h-10 w-[30vw] bg-slate-100 border-none rounded-[2px] text-slate-700 p-3 ease in duration-200  outline-none focus:outline-[#D3825F] focus:brightness-110 focus:bg-white '
         />
         <button href="/"  disabled={search===""} className='absolute items-end mr-5'>
-        <Image src="/icons8-search-50.png" width={25} height={25}  />
+        <Image src="/icons8-search-50.png" width={25} height={25}  alt='search'/>
         </button>
         </form>
     </div>

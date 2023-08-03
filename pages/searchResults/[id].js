@@ -2,18 +2,23 @@ import ProductCard from '@/components/ProductCard';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
+
+
+
+
 const searchResults = () => {
+
     const [data, setData] = useState([]);
 
     const router = useRouter();
     const id = router.query.id;
-   
+    console.log(id);
 
     useEffect(()=>{
         fetch('https://api.escuelajs.co/api/v1/products')
         .then((res)=>res.json())
         .then((data)=>{setData(data)})
-    },[id])
+    },[])
     
     const newData= data.filter((item)=> item.title.toLowerCase().includes(id))
 

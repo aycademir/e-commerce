@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Slide from '@/components/Slide'
 import Link from 'next/link'
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 
@@ -21,7 +22,6 @@ export default function Home({category}) {
        
         <Slide data={category}/>
 
-      
       </div>
     </div>
   )

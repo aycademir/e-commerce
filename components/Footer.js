@@ -11,14 +11,14 @@ const Footer = () => {
     
 
   return (
-    <footer className='bg-[#10022f] flex p-8'>
+    <footer className='bg-[#613a43] flex p-8'>
         {footerData.map((heading)=>{
             return (
-                <div className='flex flex-col pr-[10vw]'>
+                <div key={heading} className='flex flex-col pr-[10vw]'>
                 <Link href="/" className='hover:underline text-xl font-bold pb-4 text-white'>{heading[0]}</Link>
                 {heading[1].map((subheading)=>{
                     return (
-                        <Link href='/' className='hover:underline text-white'>{subheading}</Link>
+                        <Link key={subheading} href='/' className='hover:underline text-white'>{subheading}</Link>
                     )
                 })}
                 </div>

@@ -51,13 +51,16 @@ const CategoryPage = ({category}) => {
         {Data.map((product)=>{
 
             return(
-                <Link href={`/products/${product.id}`}>
+                
                     <ProductCard 
+                        id={product.id}
                         key={product.id}
                         url={product.images[0]} 
                         name={product.title} 
-                        price={product.price}/>
-                </Link>
+                        price={product.price}
+                        description={product.description}
+                    />
+               
             ) 
             
             

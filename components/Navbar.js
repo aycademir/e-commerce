@@ -95,6 +95,11 @@ const Navbar = () => {
             })}
         </div>
 
+        <div className='flex items-center'>
+            <Link href="/cart">cart</Link>
+        </div>
+
+
         
             
         
