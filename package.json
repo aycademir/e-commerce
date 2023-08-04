@@ -11,11 +11,13 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "10.4.14",
+    "js-cookie": "^3.0.5",
     "next": "13.4.12",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-alice-carousel": "^2.7.1",
     "react-dom": "18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-redux": "^8.1.2",
     "react-responsive-carousel": "^3.2.23",
     "swiper": "^10.0.4",

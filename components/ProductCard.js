@@ -1,54 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import useShop from '@/pages/ShopContext'
+
 import Link from 'next/link'
 
 const ProductCard = ({id, url, name, price, description}) => {
 
-  const {total, products, addToCart, removeFromCart, incrementCount, decreaseCount} = useShop()
-  const [count, setCount] = useState(0)
-  const [isInCart, setIsInCart] = useState(false)
-
-  useEffect(()=>{
-    const productIsInCart = products.find((product) => product.id === id);
-
-    if (productIsInCart){
-      setIsInCart(true)
-    }else{
-      setIsInCart(false)
-    }
-  },[products, name, count])
-
-  const handleClickPlus = () => {
-    setCount(count+1);
-    console.log(count);
-    const product = {id, name, url, price, description, count}
-    
-    if (isInCart) {
-      
-      incrementCount(product)
-    } else {
-      console.log(product);
-      addToCart(product)
-      
-    }
-  }
-
-  const handleClickMinus = () => {
-    const product = {id, name, url, price, description, count}
-    
-    if (isInCart && count >1) {
-      setCount(count-1)
-      incrementCount(product)
-    } else {
-      removeFromCart(product)
-      setCount(count-1)
-    }
-  }
-
-  const handleAdd = () => {
-
-  }
 
   return (
    
@@ -62,14 +18,6 @@ const ProductCard = ({id, url, name, price, description}) => {
           <p className=' text-lg font-semibold text-[#D3825F] brightness-110'>${price}</p>
         </div>
       </Link>
-      {/*
-        <div>
-        <button  onClick={handleClickMinus}><p>-</p></button>
-          <span>{count}</span>
-          <button  onClick={handleClickPlus}><p>+</p></button>
-          <button onClick={handleAdd}>add</button>
-        </div>
-  */} 
         
     </div>
  

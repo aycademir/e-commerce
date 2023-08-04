@@ -28,7 +28,4 @@ export default function Home({category}) {
 }
 
 
-/* onClickThumb={(item, i) => {
-          router.push(`/categories/${data.at(i).id}`)
-        }}
-        */ 
+ 

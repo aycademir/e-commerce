@@ -96,7 +96,7 @@ const Navbar = () => {
         </div>
 
         <div className='flex items-center'>
-            <Link href="/cart">cart</Link>
+            <Link href="/cart" ><img src='/cart.png' alt='cart' className='h-[30px]'/></Link>
         </div>
 
 

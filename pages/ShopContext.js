@@ -1,5 +1,6 @@
 import { createContext, useReducer, useContext, useState } from "react";
 import shopReducer, { initialState } from "./shopReducer";
+import Cookies from "js-cookie";
 
 const ShopContext = createContext(initialState);
 
@@ -10,22 +11,25 @@ export const ShopProvider = ({children}) => {
 
         const updatedCart = state.products;
         for (let idx=0; idx < updatedCart.length; idx ++) {
-            console.log("sgdh");
+          
             if (updatedCart[idx].id === product.id) {
                 updatedCart[idx].count += product.count;
                     break;
             }
         }
         const exists = updatedCart.some((item) => item.id=== product.id)
-        console.log(exists, "123456");
+       
         if (!exists){
             updatedCart.push(product)
         }
         
         
-        
+        Cookies.set("products", JSON.stringify(updatedCart))
+       
         
         updatePrice(updatedCart);
+
+
         dispatch({
             type: "ADD_TO_CART",
             payload: {
@@ -35,8 +39,8 @@ export const ShopProvider = ({children}) => {
     }
 
     const removeFromCart = (product) => {
-        const updatedCart = state.products.filter((currentProduct) => currentProduct.name !== product.name)
-       
+        const updatedCart = state.products.filter((currentProduct) => currentProduct.id !== product.id)
+        Cookies.set("products", JSON.stringify(updatedCart))
         updatePrice(updatedCart);
         dispatch({
             type: "REMOVE_FROM_CART",
@@ -68,7 +72,7 @@ export const ShopProvider = ({children}) => {
                 break;
             }
            }
-     
+        Cookies.set("products", JSON.stringify(newCart))
         updatePrice(newCart);
 
         dispatch({
@@ -88,7 +92,7 @@ export const ShopProvider = ({children}) => {
                 break;
             }
         }
-
+        Cookies.set("products", JSON.stringify(newCart))
         updatePrice(newCart);
         dispatch({
             type: "DECREASE_COUNT",

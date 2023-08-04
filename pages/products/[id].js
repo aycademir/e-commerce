@@ -4,6 +4,8 @@ import ProductImages from "@/components/ProductImages"
 import Link from "next/link";
 import { useState, useEffect } from 'react'
 import useShop from '@/pages/ShopContext'
+import ProductSlide from "@/components/ProductSlide";
+import { Oval } from "react-loader-spinner";
 
 export const getStaticPaths = async () => {
   const res= await fetch('https://api.escuelajs.co/api/v1/products');
@@ -53,12 +55,9 @@ const Product = ({category}) => {
 
   const handleAdd = () => {
     const product = {id, name, url, price, description, count}
-
-    
-      addToCart(product)
-    
-    
+    addToCart(product)
     setCount(1)
+    
   }
 
 
@@ -67,7 +66,9 @@ const Product = ({category}) => {
     <>
       <div className="flex justify-between px-[6%] py-[8%]">
         {/*<ProductImages images={category.images}/>*/}
-        <div className="w-[45vw] h-[70vh] bg-slate-500"></div>
+        <div className="w-[43vw] h-[70vh] ">
+          <ProductSlide images={url}/>
+        </div>
         <div className="w-[35vw]">
           <h2 className=" font-bold text-5xl pb-[40px]">{ category?.title }</h2>
           <h3 className="pb-[20px] text-[20px]">{ category?.description }</h3>

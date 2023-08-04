@@ -4,23 +4,27 @@ import React, { useEffect, useState } from 'react'
 
 
 
+export const getServerSideProps = async ({query}) => {
+
+    const res= await fetch('https://api.escuelajs.co/api/v1/products');
+    const data = await res.json()
+
+    return {props: {Data: data}}
+} 
 
 
-const searchResults = () => {
+const searchResults = ({Data}) => {
 
-    const [data, setData] = useState([]);
 
+    console.log("sdadsdas");
     const router = useRouter();
-    const id = router.query.id;
+    //const id = router.asPath.substring(15, router.asPath.length);
+    const id = router.query.text.toLowerCase()
     console.log(id);
 
-    useEffect(()=>{
-        fetch('https://api.escuelajs.co/api/v1/products')
-        .then((res)=>res.json())
-        .then((data)=>{setData(data)})
-    },[])
+   
     
-    const newData= data.filter((item)=> item.title.toLowerCase().includes(id))
+    const newData= Data.filter((item)=> item.title.toLowerCase().includes(id))
 
     const arr = id.split(" ")
     for (let i = 0; i < arr.length; i++) {
@@ -37,9 +41,12 @@ const searchResults = () => {
           : newData.map((product)=>{
                 return <ProductCard 
                 key={product.id}
+                id={product.id}
                 url={product.images[0]} 
                 name={product.title} 
-                price={product.price}/>
+                price={product.price}
+                description={product.description}
+                />
           })
         }
         

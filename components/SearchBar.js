@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 
 
 const SearchBar = () => {
@@ -14,7 +14,12 @@ const SearchBar = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        router.push("/searchResults/"+search.toLowerCase())
+        Router.push({
+            pathname: "/search",
+            query: {
+              text: search,
+            },
+          });
     }
   return (
     <div >

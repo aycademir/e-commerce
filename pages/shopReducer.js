@@ -1,8 +1,14 @@
+import Cookies from "js-cookie";
+
+
 export const initialState= {
     total: 0,
-    products: [],
+    products: Cookies.get("products")
+        ? JSON.parse(Cookies.get("products"))
+        : [],
    
 }
+
 
 const shopReducer = (state, action) => {
     const {type, payload} = action;
