@@ -1,6 +1,7 @@
 import React, { use } from 'react'
 import useShop from '@/pages/ShopContext'
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const CartCard = ({product}) => {
 
@@ -21,14 +22,17 @@ const CartCard = ({product}) => {
         const product = {id, name, url, price, description, count}
         if (clicked==="plus") {
             incrementCount(product)
-        } else {
+        } else if (clicked==="minus"){
             if (count>=1){
                 decreaseCount(product)
             } else {
                 removeFromCart(product)
             }
             
+        }else if (clicked==="trash"){
+            removeFromCart(product)
         }
+
         console.log(products);
       }, [count, clicked])
 
@@ -42,6 +46,10 @@ const CartCard = ({product}) => {
         setClicked("minus")
         setCount(count-1);
         
+    }
+
+    const handleClickTrash = () => {
+        setClicked("trash");
     }
 
 
@@ -63,13 +71,18 @@ const CartCard = ({product}) => {
                     </div>
                 <button className="  w-[30%] flex items-center  justify-center text-4xl" onClick={handleClickPlus}><img src="/plus.png" className="w-[50%]"/></button>
             </div>
-            
-            {/*<h3>{product.url[0]}</h3>*/}
+         
             
             
 
         </div>
-        <div className='flex w-[20%] justify-center items-end pb-5'>
+        <div className='flex flex-col w-[20%] justify-between items-center pb-5'>
+            <div className='w-full flex items-end justify-end pr-7 pt-7'>
+                <button onClick={handleClickTrash}>
+                    <img src='/trash.png' className='h-[25px] hover:h-[26px] ease-in duration-100' alt='bin'/>
+                </button>
+            </div>
+            
             <h3 className='text-center text-xl font-semibold text-[#D3825F]'>${product.price*product.count}</h3>
         </div>
         

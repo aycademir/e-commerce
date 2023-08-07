@@ -2,7 +2,9 @@ import Cookies from "js-cookie";
 
 
 export const initialState= {
-    total: 0,
+    total: Cookies.get("total")
+        ? Cookies.get("total").toString()
+        : 0,
     products: Cookies.get("products")
         ? JSON.parse(Cookies.get("products"))
         : [],

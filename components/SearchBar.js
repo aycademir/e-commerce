@@ -20,6 +20,7 @@ const SearchBar = () => {
               text: search,
             },
           });
+       
     }
   return (
     <div >

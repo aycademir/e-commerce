@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useShop from './ShopContext'
 import CartCard from '@/components/CartCard'
 import dynamic from 'next/dynamic'
 
 const Cart = () => {
   const {total, products, addToCart, removeFromCart, incrementCount, decreaseCount} = useShop()
+
+
   return (
     <div className=' p-14 flex justify-between'>
       <div className='w-[80%]'>
         
-        {products.map((product, i) => {
+        {products.map((product) => {
           return <CartCard key={product.id} product={product}/>
         
         })}
       </div>
-      
+      {console.log(total)}
       <div className=' w-[17%] h-fit shadow-[rgba(149,157,165,0.2)_0px_8px_24px]'>
         <h3 className='p-5  font-medium'>Subtotal: </h3>
         <h3 className='text-center font-semibold text-4xl pb-8'>${total}</h3>

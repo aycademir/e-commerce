@@ -1,11 +1,10 @@
 
 import React from "react";
-import ProductImages from "@/components/ProductImages"
-import Link from "next/link";
+
 import { useState, useEffect } from 'react'
 import useShop from '@/pages/ShopContext'
 import ProductSlide from "@/components/ProductSlide";
-import { Oval } from "react-loader-spinner";
+
 
 export const getStaticPaths = async () => {
   const res= await fetch('https://api.escuelajs.co/api/v1/products');

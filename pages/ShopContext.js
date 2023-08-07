@@ -55,7 +55,8 @@ export const ShopProvider = ({children}) => {
         let total = 0
 
         products.forEach((product) => total+=product.price*(product.count));
-
+      
+        Cookies.set("total", total.toString())
         dispatch({
             type: "UPDATE_PRICE",
             payload: {
