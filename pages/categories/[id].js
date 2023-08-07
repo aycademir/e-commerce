@@ -30,13 +30,15 @@ export const getStaticProps = async (context) => {
 
 const CategoryPage = ({category}) => {
     const [numberVisible, setNumberVisible] = useState(16);
+   
 
     const [Data, setData] = useState([]);
 
     useEffect(()=>{
+  
         setNumberVisible(16)
         fetch(`https://api.escuelajs.co/api/v1/categories/${category.id}/products`).then((res)=>res.json()).then((data)=>{setData(data)})
-        
+       
     }, [category.id])
     
 
@@ -44,7 +46,7 @@ const CategoryPage = ({category}) => {
     
     <div className=' align-middle justify-center text-center pt-20 text-4xl'>
     
-    
+   
         <h1 className='pb-20  underline-offset-8 underline'>{category.name}</h1>
     <div className=' justify-center flex flex-row flex-wrap'>
         {Data.map((product, i)=>{
@@ -80,6 +82,8 @@ const CategoryPage = ({category}) => {
     </div>
        
     <button onClick={()=>setNumberVisible(numberVisible+16) } className='text-base underline underline-offset-4 m-10'>Click to see more products</button>
+       
+        
     
     </div>
   )

@@ -21,7 +21,9 @@ export default function App({products}) {
             "--swiper-pagination-color": "white",
             "--swiper-pagination-bullet-inactive-color": "#999999",
             "--swiper-pagination-bullet-inactive-opacity": "1",
-            "--swiper-pagination-bullet-horizontal-gap": "6px"
+            "--swiper-pagination-bullet-horizontal-gap": "6px",
+            marginTop: "100px",
+            marginBottom: "100px"
           }}
         autoplay={{
             delay: 2000,
